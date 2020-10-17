@@ -1,68 +1,236 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Handling events
 
-## Available Scripts
+## Event handling
 
-In the project directory, you can run:
+Handling events in React is almost the same as normal javaScript and HTML. Either way, React uses a special synthetic Event that functions can get hold of, and create logic for what should occur next. Eventhandling is tightly coupled with the use of state. Every event that can be captured through an JSX-element in react is prefixed by `on`, i.e. `on`Click, `on`DoubleClick, `on`KeyPressed, `on`Submit etc.
 
-### `yarn start`
+Example usage for how one can capture events with functions in react. The functions can be defined with different syntax, the same goes for registrating the call in a given JSX-element.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```js
+const Example = () => {
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+    const handleEvent = (e) => {
+        // do something with the event
+    }
 
-### `yarn test`
+    return <div onClick={handleEvent}></div>
+}
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+```js
+const Example = () => {
 
-### `yarn build`
+    function handleEvent(e){
+        // do something
+    }
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    return <div onClick={e => handleEvent(e)}></div>
+}
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
+```js
+const Example = () => {
+    const [someState, setSomeState] = useState(/* some initial value */)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    const handleEvent = e => setSomeState(/* update state */)
 
-### `yarn eject`
+    return <div onClick={e => handleEvent(e)}></div>
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### 📌 A1 - Create a counter.
 
-## Learn More
+Create a component that keeps track of a count. Create buttons that increments and decrements the value of the count with the use of the `onClick` event.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<details><summary>🔑 Solution</summary>
+<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Solution 1: Inline setState functions directly in the JSX-abbreviation of the `<button>` html element
+```jsx
+const Counter = () => {
+    const [count, setCount] = useState(0);
 
-### Code Splitting
+    return (
+    <React.Fragment>
+        <h1>My count: {count}</h1>
+        <button onClick={() => setState(count + 1)}>Increment by 1</button>
+        <button onClick={() => setState(count + 1)}>Decrement by 1</button>
+    <React.Fragment>
+    )
+}
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+<br>
 
-### Analyzing the Bundle Size
+Solution 2: Creating named functions.
+<br>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```jsx
+const Counter = () => {
+    const [count, setCount] = useState(0);
 
-### Making a Progressive Web App
+    const increment = () => setCount(count + 1);
+    
+    const decrement = () => setCount(count - 1);
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+    return (
+    <React.Fragment>
+        <h1>My count: {count}</h1>
+        <button onClick={increment}>Increment by 1</button>
+        <button onClick={decrement}>Decrement by 1</button>
+    <React.Fragment>
+    )
+}
+```
 
-### Advanced Configuration
+<br>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Solution 3 securing correct state.
 
-### Deployment
+```jsx
+const Counter = () => {
+    const [count, setCount] = useState(0);
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+    const increment = () => setCount(prevCount => prevCount + 1);
+    
+    const decrement = () => setCount(prevCount => prevCount - 1);
 
-### `yarn build` fails to minify
+    return (
+    <React.Fragment>
+        <h1>My count: {count}</h1>
+        <button onClick={increment}>Increment by 1</button>
+        <button onClick={decrement}>Decrement by 1</button>
+    <React.Fragment>
+    )
+}
+```
+</details>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<br>
+
+#### 📌 A2 - Rectangle changing color.
+
+Create a rectangle that changes color when your mouse hovers over the element.
+
+tips: `onMouseEnter` and `onMouseLeave` events.
+
+rectangle div styles
+
+```js
+<div style={{width: 250, height: 250, backgroundColor: /* white, blue, black, yellow, purple  */}}>
+</div>
+```
+
+<details><summary>🔑 Solution</summary>
+<br>
+
+The state defined by useState has the naming convention offered by JS-Objects. i.e.
+
+```js
+const backgroundColor = "white";
+
+const myObject = {
+    backgroundColor: backgroundColor
+}
+
+//shorthand
+const myObjectWithShorthand = { backgroundColor }
+
+// myObject === myObjectWithShortand (true)
+```
+```jsx
+const Counter = () => {
+    const [backgroundColor, setBackgroundColor] = useState("white");
+
+    const handleMouseEnter = () => setBackgroundColor("purple");
+
+    const handleMouseLeave = () => setBackgroundColor("white");
+
+    return (
+    <React.Fragment>
+        <div
+        style={{width: 250, height: 250, backgroundColor}}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        >
+        </div>
+    <React.Fragment>
+    )
+}
+```
+</details>
+
+<br>
+
+#### 💎 Combine A1 and A2 by using a single state Object
+
+Use A1 and A2 and combine both their states into a javaScript-Object. The main component should include the behaviour from A1 and A2; incrementing and decrementing a count, and a `<div>` that changes color when hovering over it. This exercise focus on becoming comfortable with the usage and handling of javascript objects. 
+
+<details><summary>🔑 Solution</summary>
+
+The solution can be written in numerous ways based on javascript preferences with objects and function handling.
+All the examples are doing the exact same. 
+
+```jsx
+setState({ backgroundColor, count}) => {
+    return { backgroundColor, count: count + 1}
+})
+
+setState(prevState => {
+    return { ...prevState, count: prevState.count + 1}
+});
+
+setState(prevState => {
+    return { backgroundColor: prevState.backgroundColor, count: prevState.count + 1 }
+})
+
+//Personal favorite by always destructuring and using shorthand object return. if the state object is large, update only the object entry that you want.
+
+setState(({ count, ...prevState}) => ({ ...prevState, count: count + 1}))
+```
+<br>
+
+```jsx
+const App = () => {
+  const [state, setState] = useState({ backgroundColor: "white", count: 0 })
+
+  const increment = () => setState(prevState => {
+    return { backgroundColor: prevState.backgroundColor, count: prevState.count + 1 }
+  });
+  
+  const decrement = () => setState(({ count, ...prevState}) => ({
+    ...prevState, count: count - 1})
+  )
+
+  const handleMouseEnter = () => setState(prevState => ({
+      count: prevState.count, backgroundColor: "purple"
+  }));
+
+  const handleMouseLeave = () => setState(prevState =>  ({
+      ...prevState, backgroundColor: "white"
+  }));
+
+  const {
+      count,
+      backgroundColor
+  } = state;
+
+  return (
+      <React.Fragment>
+          <div
+          style={{width: 250, height: 250, backgroundColor}}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          />
+          <h1>My count: {count}</h1>
+          <button onClick={increment}>Increment by 1</button>
+          <button onClick={decrement}>Decrement by 1</button>
+      </React.Fragment>
+  )
+}
+```
+</details>

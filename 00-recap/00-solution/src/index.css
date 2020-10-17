@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
 #root > div {
   display: inline-block;
 }
@@ -12,7 +10,7 @@
 
 .name {
   font-size: 20px;
-  font-family: 'VT323', monospace;
+  font-family: monospace;
 }
 
 .profilepic {

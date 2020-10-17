@@ -26,12 +26,11 @@ Det anbefales å starte på oppgave `01-components`, og gå tilbake til `00-js-c
 * Trykk `Ctrl` `c` for å avslutte
 
 ## Oppgaver
-#### 00 [JavaScript concepts used in React](00-js-concepts/README.md)
-#### 01 [JSX and Components](01-components/README.md)
-#### 02 [Component Properties](02-props/README.md)
-#### 03 [State with useState hook](03-state/README.md)
-#### 04 [Handling events](04-handlingevents/README.md)
-#### 05 [Conditional Rendering](05-conditionalrendering/README.md)
-#### 06 [List and Keys](06-list-keys/README.md)
-#### 07 [Forms](07-forms/README.md)
-#### 08 [useEffect](08-useEffect/README.md)
+#### 00 [Recap](00-recap/README.md)
+#### 01 [useEffect-hook](01-use-effect/README.md)
+#### 02 [Using a http client](02-http/README.md)
+
+<br>
+
+# Project
+###  [Pokemon project](03-state/README.md)

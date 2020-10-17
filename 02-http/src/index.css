@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font: "Helvetica Neue";
+  font-weight: 150;
+  font-size: 24;
+}
+
+h2 {
+  font: "Helvetica Neue";
+  font-weight: 150;
+  font-size: 20;
+}

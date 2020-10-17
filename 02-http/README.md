@@ -1,45 +1,35 @@
-# Handling events
+# HTTP clients and Promises
 
-## Event handling
+## HTTP calls and Promises
 
-Handling events in React is almost the same as normal javaScript and HTML. Either way, React uses a special synthetic Event that functions can get hold of, and create logic for what should occur next. Eventhandling is tightly coupled with the use of state. Every event that can be captured through an JSX-element in react is prefixed by `on`, i.e. `on`Click, `on`DoubleClick, `on`KeyPressed, `on`Submit etc.
+Lets say that you're about to order something on your favorite online shopping site. You've added all your new items into a shopping basket, and you've checked it out. Your credit card information is pasted into the payment form and the order confirmation has arrived into your mailbox after a series of bank authentication services. That email confirmation is a Promise. The company have **Promised** to deliver your package. it may take a couple of days, or an entire week before your package has arrived.
 
-Example usage for how one can capture events with functions in react. The functions can be defined with different syntax, the same goes for registrating the call in a given JSX-element.
+From the [mozilla developer page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-```js
-const Example = () => {
+> The Promise object in javaScript represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
 
-    const handleEvent = (e) => {
-        // do something with the event
-    }
+Hence the "eventual completion" is you as a customer "waiting" for the package to arrive, and the resulting value of that operation is your actual package.
 
-    return <div onClick={handleEvent}></div>
-}
+Lets say we have some sort of external API that gives us some data. That API-call needs to travel for a certain amount of time. The time needed to retreive data often relies on factors such as: internet speed, signal and geolocation of servers. By having these factors, the time it takes for a web-application to recieve some data can be from a few milliseconds, to entire seconds.
 
-```
-```js
-const Example = () => {
+If it takes an entire week for your package to arrive, you're absolutely going to enjoy your life while it travels (i.e. buying an item online is an asynchronous request, you do not get the item immediately). The same applies to the web-application; the application want to continue living its life.
 
-    function handleEvent(e){
-        // do something
-    }
+Syntactically a Promise looks like this, and it's an object.
 
-    return <div onClick={e => handleEvent(e)}></div>
-}
-
-```
-```js
-const Example = () => {
-    const [someState, setSomeState] = useState(/* some initial value */)
-
-    const handleEvent = e => setSomeState(/* update state */)
-
-    return <div onClick={e => handleEvent(e)}></div>
-}
-
+```jsx
+Promise((resolve, reject) => {
+    /*
+    resolve() return the data / item you want to deliver, if it succeeds (the result)
+    reject() the thing you want to deliver, if it goes wrong
+    */
+})
 ```
 
-<br>
+Lets look at the `fetch()` HTTP-client that is built into the javascript API. The documentation clearly states that the `fetch()` function returns a Promise. The call to the `url` takes a few ms to a second.
+
+```js
+const promise = fetch(url, options)
+```
 
 
 #### 📌 A1 - Create a counter.

@@ -1,6 +1,6 @@
 # React kurs
 
-Hei og velkommen til introduksjonskurs i React!
+Hei og velkommen til introduksjonskurs i React del 2!
 
 ## Installer
 * [git](https://git-scm.com/downloads)
@@ -28,7 +28,7 @@ Det anbefales å starte på oppgave `01-components`, og gå tilbake til `00-js-c
 ## Oppgaver
 #### 00 [Recap](00-recap/README.md)
 #### 01 [useEffect-hook](01-use-effect/README.md)
-#### 02 [Using a http client](02-http/README.md)
+#### 02 [Http clients](02-http/README.md)
 
 <br>
 

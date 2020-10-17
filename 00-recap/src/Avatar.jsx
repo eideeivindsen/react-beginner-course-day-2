@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const Avatar = ({ name, imageUrl }) => {
     return <div className="avatar">
@@ -7,4 +7,4 @@ const Avatar = ({ name, imageUrl }) => {
     </div>
 }
 
-export default Avatar;
+export default Avatar

@@ -1,25 +1,22 @@
-#root {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+#root > div {
+  display: inline-block;
 }
 
 .avatar {
+  display: inline-block;
   margin: 20px;
   text-align: center;
 }
 
 .name {
   font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: monospace;
 }
 
 .profilepic {
   width: 100px;
-  height: auto;
-}
-
-img {
+  height: 100px;
+  object-fit: contain;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   image-rendering: -moz-crisp-edges;

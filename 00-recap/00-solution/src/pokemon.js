@@ -1,63 +1,64 @@
+const url = id => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`
 const pokemon = [
     {
         id: 1,
         first: {
             name: "Bulbasaur",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+            imageUrl: url(1),
         },
         second: {
             name: "Ivysaur",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+            imageUrl: url(2),
         },
         third: {
             name: "Venysaur",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+            imageUrl: url(3),
         }
     }, {
         id: 2,
         first: {
             name: "Charmander",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+            imageUrl: url(4),
         },
         second: {
             name: "Charmeleon",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
+            imageUrl: url(5),
         },
         third: {
             name: "Charizard",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+            imageUrl: url(6),
         }
     },
     {
         id: 3,
         first: {
             name: "Squirtle",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+            imageUrl: url(7),
         },
         second: {
             name: "Squirtoise",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
+            imageUrl: url(8),
         },
         third: {
             name: "Blastoise",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
+            imageUrl: url(9),
         }
     },
     {
         id: 4,
         first: {
             name: "Caterpie",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"
+            imageUrl: url(10),
         },
         second: {
             name: "Metapod",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
+            imageUrl: url(11),
         },
         third: {
             name: "Butterfree",
-            imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png"
+            imageUrl: url(12),
         }
-    }];
+    }
+]
 
-
-export default pokemon;
+export default pokemon

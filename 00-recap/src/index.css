@@ -1,12 +1,12 @@
-.avatar {
-  margin: 20px;
-  text-align: center;
-}
-
 #root {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.avatar {
+  margin: 20px;
+  text-align: center;
 }
 
 .name {
@@ -19,9 +19,8 @@
   height: auto;
 }
 
-
 img {
   image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
 }

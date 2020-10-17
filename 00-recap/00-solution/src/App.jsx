@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+
 import Avatar from "./Avatar";
 import pokemonList from "./pokemon";
 
@@ -17,10 +18,8 @@ const Pokemon = ({ first, second, third }) => {
   </div>
 }
 
-const App = () => {
-  return <React.Fragment>
-    {pokemonList.map(({ id, ...pokemon }) => <Pokemon key={id} {...pokemon} />)}
-  </React.Fragment>
-}
+const App = () => <>
+  {pokemonList.map(({ id, ...pokemon }) => <Pokemon key={id} {...pokemon} />)}
+</>
 
 export default App;

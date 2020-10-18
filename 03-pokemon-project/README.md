@@ -141,7 +141,7 @@ export default Title;
 
 ```jsx
 // App.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HelperAPI from "./HelperAPI";
 
 import Title from "./Title";
@@ -175,7 +175,12 @@ We want to display all the photos for all the pokemons we now have stored in our
 
 Lets create a new file called `PokemonDisplayer.jsx`
 
-Inside `PokemonDisplayer` we are going to expect a list of pokemon-names as a prop.
+`PokemonDisplayer` should do the following:
+- Recieve a list of pokemon-names as a property
+- Map over these names, return divs displaying the name
+- Pass our list of pokemon names as a prop from `App.tsx`
+
+A reiteration for how one can pass props to a component, and make that component use the recieved props
 
 ```jsx
 // sending props
@@ -187,8 +192,117 @@ const MyComponent = ({ propName }) => {
 }
 ```
 
+<details><summary>🔑 Solution</summary>
+<br>
+
+```jsx
+// PokemonDisplayer.jsx
+import React from "react";
+
+const PokemonDisplayer = ({ pokemonList }) => {
+  return (
+    <div>
+      {pokemonList.map(name => (
+        <div key={name}>{ name }</div>
+      ))}
+    </div>
+  );
+};
+```
+
+```jsx
+// App.jsx
+import React, { useState, useEffect } from "react";
+import HelperAPI from "./HelperAPI";
+
+import Title from "./Title";
+import PokemonDisplayer from "./PokemonDisplayer";
+
+function App() {
+  const [pokemonList, setPokemonList] = useState([]);
+
+  useEffect(() => {
+    HelperAPI.getPokemon().then((pokemon) => {
+      setPokemonList(pokemon);
+    });
+  }, []);
+
+  return (
+    <div className="App">
+      <Title />
+      <PokemonDisplayer pokemonList={pokemonList} />
+    </div>
+  );
+}
+
+export default App;
+```
+</details>
+<br />
 
 
+#### Pokemon component
+
+Lets create a pokemon-component that can display a pixelated image of a pokemon, given their `pokemonId`.
+Our HelperAPI has a method for getting an `ID` for a given pokemon name.
+
+Create a new file called: `Pokemon.jsx`. `<Pokemon />` should do the following:
+- Receive `name` as a prop.
+- Create state that can store and capture it's `id`
+- Request the pokemonId with HelperAPI on initial render (useEffect)
+- Display the image of an pokemon.
+- Update `PokemonDisplayer` to use the new `Pokemon` component instead of displaying names
+
+<details><summary>🔑 Solution</summary>
+<br>
+
+```jsx
+// Pokemon.jsx
+import React, { useEffect, useState } from "react";
+import HelperAPI from "./HelperAPI";
+
+const Pokemon = ({ name }) => {
+  const [id, setId] = useState();
+
+  useEffect(() => {
+      if(name) {
+          HelperAPI.getPokemonId(name).then((id) => setId(id));
+      }
+  }, [name]);
+
+  const getImageUrl = () => {
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+  };
+
+  return (
+      <>
+        {name && <img width="auto" height="100" src={getImageUrl()}></img>}
+      </>
+  )
+};
+
+export default Pokemon;
+```
+
+```jsx
+// PokemonDisplayer.jsx
+import React from "react";
+import Pokemon from "./Pokemon";
+
+const PokemonDisplayer = ({ pokemonList }) => {
+  return (
+    <div className="pokeContainer">
+      {pokemonList.map(name => (
+        <Pokemon key={name} name={name} />
+      ))}
+    </div>
+  );
+};
+
+export default PokemonDisplayer;
+```
+</details>
+<br />
 
 
 ### Part 3: onClick events and passing functions as props

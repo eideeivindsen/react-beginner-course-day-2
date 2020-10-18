@@ -1,7 +1,7 @@
 import React from "react";
 import Pokemon from "./Pokemon";
 
-export default ({ pokemonList }) => {
+const PokemonDisplayer = ({ pokemonList }) => {
   return (
     <div className="pokeContainer">
       {pokemonList.map(name => (
@@ -10,3 +10,5 @@ export default ({ pokemonList }) => {
     </div>
   );
 };
+
+export default PokemonDisplayer;

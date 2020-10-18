@@ -19,9 +19,9 @@ Beskrivelser av temaene ligger i `README.md` filene, som leses best ved å navig
 
 Kurset fra [dag1](https://github.com/react-kurs/dag1) kombinert med foilene fra dette repoet gir utgangspunktet for å leke seg med pokemon APIet fra [https://pokeapi.co]. I dette kurset skal vi bygge en **Pokemon Fusion** applikasjon!
 
-Hvis det er visse tema som ikke sitter helt før, eller i løpet av del 2, og du gjerne vil ha en liten oppdatering, anbefaler vi å gå på [React sin dokumentasjon](https://reactjs.org/docs/getting-started.html) eller se på konseptene fra [forrige del 1](https://github.com/react-kurs/dag1s).
+Hvis det er visse tema som ikke sitter helt før, og du gjerne vil ha en liten oppdatering, anbefaler vi å gå på [React sin dokumentasjon](https://reactjs.org/docs/getting-started.html) eller se på temaene fra [forrige del 1](https://github.com/react-kurs/dag1s).
 
-Repoet er har følger samme konvensjon slik som forrige del.
+Repoet følger samme mappe-struktur slik som forrige del.
 
 ```bash
 .
@@ -59,18 +59,19 @@ Repoet er har følger samme konvensjon slik som forrige del.
 └── package.json
 ```
 
-Det anbefales å starte på oppgave `01-components`, og gå tilbake til `00-js-concepts` dersom det blir vanskelig.
 
-* For å starte en oppgave, kjør kommandoen `npm run XX`. Feks `npm run 01`
-* For å starte et løsningsforslag, kjør `npm run XXs` (s for solution). Feks `npm run 01s`
-* Trykk `Ctrl` `c` for å avslutte
+* For å starte et av prosjektene gjør vi følgende:  `cd 0X-"placeholdernavn"` og kjør `npm run start` / `npm start`.
+  * Eksempelvis `cd 00-recap` fulgt av `npm run start`
+  * Prosjektet skal nå kjøre på `localhost:3000` (alternativt `127.0.0.1:3000`)
+* Trykk `Ctrl` `c` for å avslutte programmet.
 
-## Oppgaver
+## Foiler
 #### 00 [Recap](00-recap/README.md)
 #### 01 [useEffect-hook](01-use-effect/README.md)
 #### 02 [Http clients](02-http/README.md)
 
 <br>
 
-# Project
+# Prosjektbeskrivelse av Pokemon Fusion
+
 ###  [Pokemon project](03-state/README.md)

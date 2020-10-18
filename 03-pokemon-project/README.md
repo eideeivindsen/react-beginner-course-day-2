@@ -5,31 +5,34 @@
 
 > Skal inneholde den overordnede beskrivelsen av prosjektet
 
-The project will use an external API that has information about every single pokemon that exists. We'll use this API to create a dynamic page that fuses together 2 different pokemons and display the result.
+Hi and welcome to **Project Pokemon Fusion**. In this module of our react course, we will be making a web-application that fuses two pokemon together into a fused version! The project will use an external API that has information about every single pokemon that exists.
+
+Our thought process went something like this: To grasp React, our course-participants must develop an application with an external API. Getting hands-on experience for how React uses real data and external APIs is crucial, and thus we chose to create something with the nostalgic feel of pokemon.
 
 
-## Specc
-> Mer spesifikk beskrivelse av prosjektet. Innholdet bør få frem veien fra start til slutt, og hvilket innhold koden bør ha for å få god forståelse av React.
+## Specc and goals
+
+The main goal is that the participant should gain knowledge in the following areas of React.
+
+* Thinking in components (reusable pieces of code and GUI-elements)
+* Sending properties (props) from component to component (Parent / Child relationship)
+* Be able to create interactivity with common hooks (useEffect and useState) and asynchronous HTTP-requests
+
+### Top level specc
+
+This is the top-level specc for the application. What should **Pokemon Fusion** do?
+
+* The application must get and store information about an array of Pokemon.
+* The application must use the external pokemon-API
+* The application should split application-logic into reusable components
+* The application must be able to handle click events. Which pokemon does the user want to fuse?
+* The application must handle a click event that fuses the chosen pokemon.
+* The UX should be as simple as possible
 
 
-* The application should fetch some pokemon
-* The user should be able to choose two pokemons, and fuse them together, displaying a result
-* The application must use different components (outsourcing logic and GUI-elements)
-  * a `<Pokemon />` component
-  * any other custom components of your choice (`<CustomComponent />`)
-* The application must define state where suitable (`const [state, setState] = useState(init)`) to hold onto data and logical operations
-* The application may use `useEffect(() => { /* logic */}, [ //deps ])` for a potential side-effect of loading a page (perhaps fetch the data you need in the beginning)
-* displaying lists should DRY'ed (`myPokemonList.map(pokemon => <MyCustomComp name={pokemon.name} />)`)
-  * DRY: The concept of writing as little code as possible, avoiding duplicating yourself
-* Sending props as objects, functions, strings.
-* Using conditional rendering with `if`-statements, terneray operators `cond ? true : false` or the `&&`-operator
+## The guide
 
-the `<App />` component is gonna be our entrypoint for all further coding.
-
-
-## Help
-
-> Spesifikk hjelp vi tror deltagerne kan dra nytte av. Hjelp til punkter som vi tror kan være utfordrende. Det kommer selvfølgelig til å være et mangfold i forkunnskapene til deltagerne.  
+### Part 1: HelperAPI, datastructures, API and App.tsx
 
 We have provided some help in `HelperAPI.jsx` that exports a spectrum of functions that can be used for those that wants.
 
@@ -58,4 +61,11 @@ const App = () => {
 }
 ```
 
-## 
+### Part 2: Reusable components
+
+
+### Part 3: onClick events and passing functions as props
+
+### Part 4: <Insert Title>
+...
+### Part N: <Title N>

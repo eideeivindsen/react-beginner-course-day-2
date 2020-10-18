@@ -129,7 +129,7 @@ Make it create a fitting title, and use the component in App.tsx
 <br>
 
 ```jsx
-// Title.tsx
+// Title.jsx
 import React from "react";
 
 const Title = () => {
@@ -140,7 +140,7 @@ export default Title;
 ```
 
 ```jsx
-// App.tsx
+// App.jsx
 import React, { useState } from "react";
 import HelperAPI from "./HelperAPI";
 

@@ -32,36 +32,163 @@ This is the top-level specc for the application. What should **Pokemon Fusion** 
 
 ## The guide
 
-### Part 1: HelperAPI, datastructures, API and App.tsx
+### Part 1: HelperAPI, datastructures and App.tsx
 
-We have provided some help in `HelperAPI.jsx` that exports a spectrum of functions that can be used for those that wants.
+Part 1 will introduce the datastructrues we're working with, the `HelperAPI` we've made to help with abstactring away http-requests in a more seamless fashion and working with `App.tsx` in the initial start. 
 
-Our HelperAPI contains the following methods, and can be used in the following way:
+#### HelperAPI and datastructures
+
+Before we begin coding, here's an overview over which kind of data we're working with, i.e. our datastructure.
+
+here's a payload from the pokeAPI. The `results` property contains an array of objects. These objects has a `name` property we're going to use extensively throughout our application.
+
+```js
+{
+  "count": 1050,
+  "next": "https://pokeapi.co/api/v2/pokemon?offset=3&limit=3",
+  "previous": null,
+  "results": [
+    {
+      "name": "bulbasaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/1/"
+    },
+    {
+      "name": "ivysaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/2/"
+    },
+    {
+      "name": "venusaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/3/"
+    }
+  ]
+}
+```
+
+We have provided a `HelperAPI` that does a lot of the work behind the scenes, but you must handle the Promise by yourself. Our HelperAPI contains the following methods, and can be used in the following way:
+
 
 ```jsx
 import React from "react";
 import HelperAPI from "./HelperAPI";
 
-const App = () => {
+HelperAPI.getPokemon(); // returns a Promise with an array of pokemon names
+HelperAPI.getPokemonId(name); // returns a Promise with the id for a given pokemon name
 
-    const helperFunctions = () => {
-        // Returns a src location for pixelated image
-        HelperAPI.getPixelatedPokemonImageById(id)
-        // Returns artistic high res image source
-        HelperAPI.getArtisticPokemonImageById(id)
-        // Returns artistic high res svg source
-        HelperAPI.getArtisticPokemonSvgById(id)
-        // sets state with a list of the first 151 pokemon
-        HelperAPI.getFirst151PokemonAsync(setState);
-        // Given a setState function and pokemonId, get pokemon information
-        HelperAPI.getPokemonAsync(setState, id);
-    }
-    
-    // return JSX-template
+const App = () => {
+  // use the helper API + component logic
+};
+```
+Examples for handling a the Promises given by the helper functions.
+
+```jsx
+HelperAPI.getPokemon().then(pokemonNames => setPokemonNames(pokemonNames));
+HelperAPI.getPokemonId("mew").then(id => setPokemonId(id));
+```
+
+#### **App.tsx**
+
+In App.tsx do the following:
+- Create component state that keeps track of all the pokemon from the API-request.
+- The request must be called on the first render only.
+
+<details><summary>🔑 Solution</summary>
+<br>
+
+```jsx
+import React, { useState } from "react";
+import HelperAPI from "./HelperAPI";
+
+function App() {
+  const [pokemonList, setPokemonList] = useState([]);
+
+  useEffect(() => {
+    HelperAPI.getPokemon().then((pokemon) => {
+      setPokemonList(pokemon);
+    });
+  }, []);
+
+  return (
+    <div className="App">
+      Example application
+    </div>
+  );
+}
+
+export default App;
+
+```
+</details>
+<br />
+
+#### **Create a fitting title**
+
+Create a new file called: `Title.jsx`
+Make it create a fitting title, and use the component in App.tsx
+
+<details><summary>🔑 Solution</summary>
+<br>
+
+```jsx
+// Title.tsx
+import React from "react";
+
+const Title = () => {
+    return <h1 style={{ font: "Helvetica Neue", fontWeight: 150 }}>Pokemon Fusion</h1>
+}
+
+export default Title;
+```
+
+```jsx
+// App.tsx
+import React, { useState } from "react";
+import HelperAPI from "./HelperAPI";
+
+import Title from "./Title";
+
+function App() {
+  const [pokemonList, setPokemonList] = useState([]);
+
+  useEffect(() => {
+    HelperAPI.getPokemon().then((pokemon) => {
+      setPokemonList(pokemon);
+    });
+  }, []);
+
+  return (
+    <div className="App">
+      <Title />
+    </div>
+  );
+}
+
+export default App;
+```
+</details>
+<br />
+
+
+
+### Part 2: Display all your pokemon on screen
+
+We want to display all the photos for all the pokemons we now have stored in our `pokemonList` state. Remember, pokemonList is an array of names.
+
+Lets create a new file called `PokemonDisplayer.jsx`
+
+Inside `PokemonDisplayer` we are going to expect a list of pokemon-names as a prop.
+
+```jsx
+// sending props
+<MyComponent propName={variableName} />
+
+// recieving props
+const MyComponent = ({ propName }) => {
+  // do things
 }
 ```
 
-### Part 2: Reusable components
+
+
 
 
 ### Part 3: onClick events and passing functions as props

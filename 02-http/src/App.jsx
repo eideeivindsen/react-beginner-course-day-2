@@ -17,7 +17,7 @@ const App = () => {
     console.log("Henter bysykkeldata fra Oslo");
     const t0 = performance.now()
 
-    fetch(byUrls["oslo"])
+    fetch(byUrls.oslo)
       .then(res => res.json())
       .then(data => setBysykkelData(data))
       .finally(() => setLeveringstidAvData(performance.now() - t0));

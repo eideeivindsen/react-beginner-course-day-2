@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     HelperAPI.someFunc();
     HelperAPI.getPokemon();
-    HelperAPI.getPokemonAsync(setState);
+    HelperAPI.getFirst151PokemonAsync(setState);
   }, [])
 
 

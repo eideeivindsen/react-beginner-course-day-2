@@ -11,7 +11,7 @@ Hei og velkommen til introduksjonskurs i React del 2!
 * `git clone https://github.com/react-kurs/dag2.git`
 * `cd dag2`
 * `npm run setup` (installer alt i alle mapper på 2-3 min)
-* `code .` (for å åpne mappen i Visual studio code, hvis det er aktivert)
+* `code .` (for å åpne mappen i Visual studio code, hvis kommandoen er aktivert)
 
 ## Intro
 Dette repoet inneholder foiler for teamene `useEffect()` og bruk av `http`-klienter med javaScript sin innebygde HTTP-klient `fetch()`.
@@ -19,7 +19,7 @@ Beskrivelser av temaene ligger i `README.md` filene, som leses best ved å navig
 
 Kurset fra [dag1](https://github.com/react-kurs/dag1) kombinert med foilene fra dette repoet gir utgangspunktet for å leke seg med pokemon APIet fra [https://pokeapi.co]. I dette kurset skal vi bygge en **Pokemon Fusion** applikasjon!
 
-Hvis det er visse tema som ikke sitter helt før, og du gjerne vil ha en liten oppdatering, anbefaler vi å gå på [React sin dokumentasjon](https://reactjs.org/docs/getting-started.html) eller se på temaene fra [forrige del 1](https://github.com/react-kurs/dag1s).
+Hvis det er visse tema som ikke sitter helt, og du gjerne vil ha en liten oppdatering, anbefaler vi å gå på [React sin dokumentasjon](https://reactjs.org/docs/getting-started.html) eller se på temaene fra [forrige del 1](https://github.com/react-kurs/dag1s).
 
 Repoet følger samme mappe-struktur slik som forrige del.
 

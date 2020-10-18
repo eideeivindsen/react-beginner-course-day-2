@@ -74,4 +74,4 @@ Repoet følger samme mappe-struktur slik som forrige del.
 
 # Prosjektbeskrivelse av Pokemon Fusion
 
-###  [Pokemon project](03-state/README.md)
+###  [Pokemon project](03-pokemon-project/README.md)

@@ -6,12 +6,24 @@ import HelperAPI from "./HelperAPI";
 
 function App() {
 
-  const [state, setState] = useState(null);
+  const [first151pokemon, setFirst151pokemon] = useState(null);
+  const [mew, setMew] = useState(null);
+  const [pokemonWithId, setPokemonWithId] = useState(null);
 
   useEffect(() => {
-    HelperAPI.someFunc();
-    HelperAPI.getPokemon();
-    HelperAPI.getFirst151PokemonAsync(setState);
+
+    if (!first151pokemon) {
+      HelperAPI.getFirst151PokemonAsync(setFirst151pokemon);
+    }
+
+    if (!mew) {
+      HelperAPI.getPokemonAsync(setMew, "mew");
+    }
+
+    if (!pokemonWithId) {
+      HelperAPI.getPokemonAsync(setPokemonWithId, 4);
+    }
+
   }, [])
 
 

@@ -8,16 +8,56 @@ Hei og velkommen til introduksjonskurs i React del 2!
 * [vscode](https://code.visualstudio.com/download) (eller en annen code-editor)
 
 ## Kom igang!
-* `git clone https://github.com/react-kurs/dag1.git`
-* `cd dag1`
-* `npm run setup`
-* `code .`
+* `git clone https://github.com/react-kurs/dag2.git`
+* `cd dag2`
+* `npm run setup` (installer alt i alle mapper på 2-3 min)
+* `code .` (for å åpne mappen i Visual studio code, hvis det er aktivert)
 
 ## Intro
-Dette repoet inneholder oppgaver innenfor en rekke kategorier.
-Oppgavebeskrivelsene ligger i `README.md` filene, og leses enkest på [github](https://github.com/react-kurs/dag1). Det er anbefalt å gjøre oppgavene meket med 📌. Oppgaver merket 💎 er bonusoppgaver som kan gjøres dersom man får god tid.
+Dette repoet inneholder foiler for teamene `useEffect()` og bruk av `http`-klienter med javaScript sin innebygde HTTP-klient `fetch()`.
+Beskrivelser av temaene ligger i `README.md` filene, som leses best ved å navigere på [github](https://github.com/react-kurs/dag2).
 
-De fleste oppgaver innenfor hver gruppe har en tilhørende fasit-dropdown som viser et forslag til løsning. Det finnes også et løsningsforslag for sluttresultatet av alle oppgavene innenfor en kategori. Dette ligger i XX-solution mappa inne i kategorien.
+Kurset fra [dag1](https://github.com/react-kurs/dag1) kombinert med foilene fra dette repoet gir utgangspunktet for å leke seg med pokemon APIet fra [https://pokeapi.co]. I dette kurset skal vi bygge en **Pokemon Fusion** applikasjon!
+
+Hvis det er visse tema som ikke sitter helt før, eller i løpet av del 2, og du gjerne vil ha en liten oppdatering, anbefaler vi å gå på [React sin dokumentasjon](https://reactjs.org/docs/getting-started.html) eller se på konseptene fra [forrige del 1](https://github.com/react-kurs/dag1s).
+
+Repoet er har følger samme konvensjon slik som forrige del.
+
+```bash
+.
+├── 00-recap
+│   ├── 00-solution
+│   ├── README.md
+│   ├── node_modules
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   └── src
+├── 01-use-effect
+│   ├── README.md
+│   ├── node_modules
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   └── src
+├── 02-http
+│   ├── README.md
+│   ├── node_modules
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   └── src
+├── 03-pokemon-project
+│   ├── README.md
+│   ├── example-solution
+│   ├── node_modules
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   └── src
+├── README.md
+└── package.json
+```
 
 Det anbefales å starte på oppgave `01-components`, og gå tilbake til `00-js-concepts` dersom det blir vanskelig.
 

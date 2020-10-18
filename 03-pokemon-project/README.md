@@ -3,10 +3,14 @@
 
 ## Project description
 
+> Skal inneholde den overordnede beskrivelsen av prosjektet
+
 The project will use an external API that has information about every single pokemon that exists. We'll use this API to create a dynamic page that fuses together 2 different pokemons and display the result.
 
 
 ## Specc
+> Mer spesifikk beskrivelse av prosjektet. Innholdet bør få frem veien fra start til slutt, og hvilket innhold koden bør ha for å få god forståelse av React.
+
 
 * The application should fetch some pokemon
 * The user should be able to choose two pokemons, and fuse them together, displaying a result
@@ -24,6 +28,8 @@ the `<App />` component is gonna be our entrypoint for all further coding.
 
 
 ## Help
+
+> Spesifikk hjelp vi tror deltagerne kan dra nytte av. Hjelp til punkter som vi tror kan være utfordrende. Det kommer selvfølgelig til å være et mangfold i forkunnskapene til deltagerne.  
 
 We have provided some help in `HelperAPI.jsx` that exports a spectrum of functions that can be used for those that wants.
 

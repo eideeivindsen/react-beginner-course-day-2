@@ -23,7 +23,6 @@ function App() {
     if (!pokemonWithId) {
       HelperAPI.getPokemonAsync(setPokemonWithId, 4);
     }
-
   }, [])
 
 

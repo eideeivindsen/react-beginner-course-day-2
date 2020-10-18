@@ -42,15 +42,19 @@ export const getPixelatedPokemonImageById = id => `https://raw.githubusercontent
 export const getArtisticPokemonImageById = id => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 export const getArtisticPokemonSvgById = id => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
 
-export const getFirst151PokemonAsync = setStateFunc => fetch("https://pokeapi.co/api/v2/pokemon-form?offset=0&limit=151")
+export const getFirst151PokemonAsync = setStateFunc => fetch("https://pokeapi.co/api/v2/pokemon-form?offset=0&limit=10")
     .then(res => res.json())
-    .then(data => setStateFunc(data));
+    .then(data => setStateFunc(data.results));
 
 export const getPokemonAsync = (setStateFunc, pokemonIdOrName) => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonIdOrName}`)
         .then(res => res.json())
         .then(data => setStateFunc(data));
 }
+
+export const getFusedPokemon = (firstId, secondId) => `https://images.alexonsager.net/pokemon/fused/${firstId}/${firstId}.${secondId}.png`
+
+
 
 
 export default {
@@ -60,5 +64,6 @@ export default {
     getPixelatedPokemonImageById,
     getArtisticPokemonImageById,
     getArtisticPokemonSvgById,
-    getFirst151PokemonAsync
+    getFirst151PokemonAsync,
+    getFusedPokemon
 }

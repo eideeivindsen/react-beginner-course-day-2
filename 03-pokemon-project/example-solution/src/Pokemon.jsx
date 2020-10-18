@@ -1,19 +1,24 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HelperAPI from "./HelperAPI";
 
-export default ({ pokemon, handleSelectPokemon }) => {
+const Pokemon = ({ name }) => {
+  const [id, setId] = useState();
 
-    console.log(pokemon);
+  useEffect(() => {
+      if(name) {
+          HelperAPI.getPokemonId(name).then((id) => setId(id));
+      }
+  }, [name]);
 
-    const [allPokemonInfo, setAllPokemonInfo] = useState(null);
+  const getImageUrl = () => {
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+  };
 
-    useEffect(() => {
-        if (!allPokemonInfo) {
-            HelperAPI.getPokemonAsync(setAllPokemonInfo, pokemon?.name);
-        }
-    }, [])
+  return (
+      <>
+        {name && <img width="auto" height="100" src={getImageUrl()}></img>}
+      </>
+  )
+};
 
-    return allPokemonInfo && <img width="auto" height="100" onClick={() => handleSelectPokemon(allPokemonInfo)} src={HelperAPI.getPixelatedPokemonImageById(allPokemonInfo.id)}></img>
-}
+export default Pokemon;

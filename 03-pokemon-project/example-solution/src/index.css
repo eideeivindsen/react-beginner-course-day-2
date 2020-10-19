@@ -19,10 +19,10 @@ code {
 }
 
 .selected {
-  border: 2px solid black;
-}
-.unselected {
-  margin: 2px;
+  background: url("/background.png");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
 }
 
 img {

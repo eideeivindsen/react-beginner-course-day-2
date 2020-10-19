@@ -32,11 +32,14 @@ Gir en payload på følgende resultat
 
 */
 
-export const getPokemon = () => {
-  return fetch('https://pokeapi.co/api/v2/pokemon-form?offset=0&limit=10')
-  .then((res) => res.json())
-  .then((data) => new Promise((resolve) => resolve(data.results.map(({name}) => name))));
+const getIdFromUrl = url => {
+  return url.split("/").slice(-2)[0];
+}
 
+export const getPokemon = () => {
+  return fetch(`https://pokeapi.co/api/v2/pokemon-form?offset=${Math.floor(Math.random() * 1000)}&limit=48`)
+    .then((res) => res.json())
+    .then((data) => data.results.map(({ name, url }) => ({ name, id: getIdFromUrl(url) })));
 };
 
 export const getPokemonId = (name) => {

@@ -18,6 +18,39 @@ code {
   flex-wrap: wrap;
 }
 
+.selected {
+  border: 2px solid black;
+}
+.unselected {
+  margin: 2px;
+}
+
+img {
+  margin: 2px;
+  width: 100px;
+  height: auto;
+}
+
+.avatar {
+  display: inline-block;
+  margin: 20px;
+  text-align: center;
+}
+
+.name {
+  font-size: 20px;
+  font-family: monospace;
+}
+
+.profilepic {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+}
+
 .App {
   display: flex;
   flex-direction: column;

@@ -35,20 +35,21 @@ const chainToString = async (id, [id1, id2, id3]) => `{
     }
 }`
 
+
 Promise.all(
     [...Array(CHAIN_IDS).keys()]
-    .map(i => chain(i+1))
+        .map(i => chain(i + 1))
 )
-.then(chains => chains.filter(chain => chain && chain.length === 3 && chain[0] <= MAX_IMG))
-.then(chains => chains.map((chain, i) => chainToString(i, chain)))
-.then(chains => Promise.all(chains))
-.then(pokemon => 
-    fs.writeFile(
-        'src/pokemon.js',
-    `const pokemon = [${pokemon.join(",")}]
+    .then(chains => chains.filter(chain => chain && chain.length === 3 && chain[0] <= MAX_IMG))
+    .then(chains => chains.map((chain, i) => chainToString(i, chain)))
+    .then(chains => Promise.all(chains))
+    .then(pokemon =>
+        fs.writeFile(
+            'src/pokemon.js',
+            `const pokemon = [${pokemon.join(",")}]
 
 export default pokemon
 `,
-        (e) => console.log(e)
+            (e) => console.log(e)
+        )
     )
-)

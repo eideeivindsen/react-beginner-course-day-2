@@ -1,7 +1,10 @@
-@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+@import url(/pokemonfont.css);
 
-body {
-  font-family: "Pokemon"
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .gallery-container {
@@ -10,21 +13,8 @@ body {
   flex-wrap: wrap;
 }
 
-.selected {
-  background: url("/background.png");
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: center;
-  text-overflow: clip;
-}
-
-img {
-  margin: 2px;
-  width: 100px;
-  height: auto;
-}
-
 .title {
+  font-family: "Pokemon";
   color: #FFCB05;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #3A5DA8;
@@ -34,33 +24,33 @@ img {
 }
 
 .avatar {
+  width: 100px;
   display: inline-block;
-  margin: 15px;
+  margin: 0 15px;
   text-align: center;
 }
 
-.name {
-  font-size: 20px;
-  font-family: monospace;
-} 
+.avatar.fusedPokemon {
+  width: 250px;
+}
+
+.selected {
+  background: url("/background.png");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 65px;
+}
 
 .profilepic {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
+  width: 100%;
+  height: auto;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   image-rendering: -moz-crisp-edges;
 }
 
-.profilepic.fusedPokemon {
-    width: 250px;
-    height: 250px;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.name {
+  margin-top: 0;
+  font-size: 20px;
+  font-family: monospace;
 }

@@ -1,6 +1,5 @@
 # Pokemon Fusion Project
 
-
 ## Project description
 
 Hi and welcome to **Project Pokemon Fusion**. In this module of our react course, we will be making a web-application that fuses two pokemon together into a fused version! The project will use an external API that has information about every single pokemon that exists.
@@ -11,24 +10,24 @@ Our thought process went something like this: To grasp React, our course-partici
 
 The main goal is that the participant should gain knowledge in the following areas of React.
 
-* Thinking in React; Components and modularity (reusable pieces of code and GUI-elements)
-* Sending properties (props) from component to component (Parent / Child relationship)
-* Be able to create interactivity with common hooks (useEffect and useState) and asynchronous HTTP-requests
+- Thinking in React; Components and modularity (reusable pieces of code and GUI-elements)
+- Sending properties (props) from component to component (Parent / Child relationship)
+- Be able to create interactivity with common hooks (useEffect and useState) and asynchronous HTTP-requests
 
 ### Top level spec
 
 This is the top-level spec for the application. What should **Pokemon Fusion** do?
 
-* Fetch and store information about an array of Pokemon.
-* Use the external pokemon-API
-* Split application-logic into reusable components
-* Handle click events. Which pokemon does the user want to fuse?
-* Handle a click event that fuses the chosen pokemon.
-* The UX should be as simple as possible
+- Fetch and store information about an array of Pokemon.
+- Use the external pokemon-API
+- Split application-logic into reusable components
+- Handle click events. Which pokemon does the user want to fuse?
+- Handle a click event that fuses the chosen pokemon.
+- The UX should be as simple as possible
 
 ## Project Overview
 
-The project overview will introduce the data we're going to working with and the `HelperAPI` we've made to help with abstactring away http-requests in a more seamless fashion. 
+The project overview will introduce the data we're going to working with and the `HelperAPI` we've made to help with abstactring away http-requests in a more seamless fashion.
 
 ### HelperAPI and data
 
@@ -43,7 +42,7 @@ HelperAPI.getPokemon(); // returns a Promise with an array of pokemon objects
 Examples for handling a Promises given by the helper function.
 
 ```jsx
-HelperAPI.getPokemon().then(data => {
+HelperAPI.getPokemon().then((data) => {
   // Do something with the data
 });
 ```
@@ -71,9 +70,11 @@ Below is a payload from the `HelperAPI.getPokemon()` API-request. The data conta
   ]
 }
 ```
+
 <br>
 
 ## Project guide
+
 <br>
 
 ### 📌 Task 1: Create a title for your application
@@ -90,8 +91,8 @@ Render the newly created component in `App.jsx`
 import React from "react";
 
 const Title = () => {
-    return <h1 className="title">Pokemon Fusion</h1>
-}
+  return <h1 className="title">Pokemon Fusion</h1>;
+};
 
 export default Title;
 ```
@@ -102,22 +103,25 @@ import React from "react";
 import Title from "./Title";
 
 const App = () => {
-
-  return <div className="App">
-            <Title />
-        </div>;
-}
+  return (
+    <div className="App">
+      <Title />
+    </div>
+  );
+};
 
 export default App;
 ```
+
 </details>
 <br><br>
 
 ### 📌 Task 2: Populate state with pokemon
 
-The first thing we want to do is using the ``helperAPI`` to fetch pokemon for our application. The fetch request will be executed when the application start up for the first time, and the result should be stored as state in our `App.jsx`.
+The first thing we want to do is using the `helperAPI` to fetch pokemon for our application. The fetch request will be executed when the application start up for the first time, and the result should be stored as state in our `App.jsx`.
 
 `App.jsx` must have the following functionality:
+
 - A unique state `pokemonList` to store pokemon.
 - A function to fetch pokemon only the first time the application render.
 - A return function to display the number of pokemons in `pokemonList`.
@@ -147,11 +151,11 @@ const App = () => {
       <p>Number of pokemon: {pokemonList.length}</p>
     </div>
   );
-}
+};
 
 export default App;
-
 ```
+
 </details>
 <br><br>
 
@@ -160,6 +164,7 @@ export default App;
 In this task will we create a new component named `PokemonGallery` that render a list of all pokemon fetched from the `helperAPI`.
 
 The `PokemonGallery` component must have the following functionality:
+
 - Take the `pokemonList` as its only property.
 - Render a `div` with the className `gallery-container`.
 - Iterate over `pokemonList` and render a `<p>` tag containing the pokemon name of each pokemon.
@@ -175,7 +180,7 @@ import PokemonGallery from "./PokemonGallery";
 const App = () => {
   const [pokemonList, setPokemonList] = useState([]);
 
-  //... 
+  //...
 
   return (
     <div className="App">
@@ -183,8 +188,9 @@ const App = () => {
       <PokemonGallery pokemonList={pokemonList} />
     </div>
   );
-}
+};
 ```
+
 ```jsx
 // PokemonGallery.jsx
 import React from "react";
@@ -192,13 +198,16 @@ import React from "react";
 const PokemonGallery = ({ pokemonList }) => {
   return (
     <div className="gallery-container">
-      {pokemonList.map(({ name, id }) => <p key={id}>{name}</p>)}
+      {pokemonList.map(({ name, id }) => (
+        <p key={id}>{name}</p>
+      ))}
     </div>
   );
 };
 
 export default PokemonGallery;
 ```
+
 </details>
 <br><br>
 
@@ -208,11 +217,11 @@ In task 4 we will improve our `PokemonGallery` by changing how our pokemon are d
 The `PokemonGallery` will now use the existing component `Avatar.jsx` to display our pokemon.
 
 The `PokemonGallery` must now have the following functionality:
+
 - Iterate over the `pokemonList` to return a `<Avatar />` components for each pokemon.
   - Wrap each avatar with a `div`.
 - Each `Avatar` component must recieve the props: `name` and `imageUrl` from each pokemon.
   - The `imageUrl` will be used to get an image of a pokemon. i.e. `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`.
-
 
 <br>
 <details><summary>🔑 Solution</summary>
@@ -227,14 +236,14 @@ const PokemonGallery = ({ pokemonList }) => {
   return (
     <div className="gallery-container">
       {pokemonList.map(({ name, id }) => {
-        return <div
-          key={id}
-        >
-          <Avatar
-            name={name}
-            imageUrl={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-          />
-        </div>
+        return (
+          <div key={id}>
+            <Avatar
+              name={name}
+              imageUrl={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+            />
+          </div>
+        );
       })}
     </div>
   );
@@ -246,10 +255,9 @@ export default PokemonGallery;
 ```jsx
 
 ```
+
 </details>
 <br><br>
-
-
 
 ### 📌 Task 5: Create refresh button
 
@@ -277,7 +285,7 @@ const App = () => {
     HelperAPI.getPokemon().then((pokemon) => {
       setPokemonList(pokemon);
     });
-  }
+  };
 
   useEffect(() => {
     handleGetPokemon();
@@ -290,19 +298,20 @@ const App = () => {
       <PokemonGallery pokemonList={pokemonList} />
     </div>
   );
-}
+};
 
 export default App;
 ```
+
 </details>
 <br><br>
-
 
 ### 📌 Task 6: Select pokemon for fuse
 
 The next step is to implement functionality for selecting two pokemon that will be fused. We will need a state to keep track of which pokemon that are selected, and an event handler to select a given pokemon.
 
 The following functionality is needed:
+
 - A state `selectedPokemon` to keep track of the selected pokemon. The state should be initialized as an empty array and later be populated with pokemon objects.
 - An `handleSelectPokemon()` event handler that push a new pokemon to the `selectedPokemon` list. The handler should also slice the list so that it never exceeds the length of 2.
   - Adding `pokemon1` to `[]` should return `['pokemon1']`.
@@ -319,23 +328,27 @@ The following functionality is needed:
 // App.jsx
 const App = () => {
   // ...
-  
+
   const [selectedPokemon, setSelectedPokemon] = useState([]);
-  
+
   // ...
-  
+
   const handleSelectPokemon = (pokemon) => {
     setSelectedPokemon([...selectedPokemon, pokemon].slice(-2));
-  }
+  };
 
   return (
     <div className="App">
       <Title />
       <button onClick={handleGetPokemon}>Refresh</button>
-      <PokemonGallery pokemonList={pokemonList} selectedPokemon={selectedPokemon} handleSelectPokemon={handleSelectPokemon}/>
+      <PokemonGallery
+        pokemonList={pokemonList}
+        selectedPokemon={selectedPokemon}
+        handleSelectPokemon={handleSelectPokemon}
+      />
     </div>
   );
-}
+};
 
 export default App;
 ```
@@ -345,20 +358,30 @@ export default App;
 import React from "react";
 import Avatar from "./Avatar";
 
-const PokemonGallery = ({ pokemonList, selectedPokemon, handleSelectPokemon }) => {
+const PokemonGallery = ({
+  pokemonList,
+  selectedPokemon,
+  handleSelectPokemon,
+}) => {
   return (
     <div className="gallery-container">
       {pokemonList.map(({ name, id }) => {
-        return <div
-          key={id}
-          className={selectedPokemon.some(selected => selected.id === id) ? "selected" : ""}
-          onClick={() => handleSelectPokemon({ name, id })}
-        >
-          <Avatar
-            name={name}
-            imageUrl={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-          />
-        </div>
+        return (
+          <div
+            key={id}
+            className={
+              selectedPokemon.some((selected) => selected.id === id)
+                ? "selected"
+                : ""
+            }
+            onClick={() => handleSelectPokemon({ name, id })}
+          >
+            <Avatar
+              name={name}
+              imageUrl={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+            />
+          </div>
+        );
       })}
     </div>
   );
@@ -366,6 +389,7 @@ const PokemonGallery = ({ pokemonList, selectedPokemon, handleSelectPokemon }) =
 
 export default PokemonGallery;
 ```
+
 </details>
 <br><br>
 
@@ -388,20 +412,24 @@ The final leap to complete the application comes by introducing a new component 
 
 ```jsx
 // FusedPokemon.jsx
-import React from 'react';
-import Avatar from './Avatar';
+import React from "react";
+import Avatar from "./Avatar";
 
 const FusedPokemon = ({ first = null, second = null }) => {
-
-    return first && second &&
-        <Avatar
-            className="fusedPokemon"
-            name={first.name.substring(0, Math.ceil(first.name.length / 2))
-                + second.name.substring(Math.floor(second.name.length / 2))
-            }
-            imageUrl={`https://images.alexonsager.net/pokemon/fused/${first.id}/${first.id}.${second.id}.png`}
-        />;
-}
+  return (
+    first &&
+    second && (
+      <Avatar
+        className="fusedPokemon"
+        name={
+          first.name.substring(0, Math.ceil(first.name.length / 2)) +
+          second.name.substring(Math.floor(second.name.length / 2))
+        }
+        imageUrl={`https://images.alexonsager.net/pokemon/fused/${first.id}/${first.id}.${second.id}.png`}
+      />
+    )
+  );
+};
 
 export default FusedPokemon;
 ```
@@ -414,7 +442,7 @@ export default FusedPokemon;
 const App = () => {
   const [pokemonList, setPokemonList] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState([]);
-  
+
   /*
     ... component functions
   */
@@ -427,21 +455,10 @@ const App = () => {
       <FusedPokemon first={firstSelected} second={secondSelected} />
     </div>
   );
-}
+};
 
 export default App;
-
 ```
+
 </details>
 <br><br>
-
-
-
-
-
-
-
-
-
-
-

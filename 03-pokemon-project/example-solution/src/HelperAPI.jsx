@@ -32,14 +32,20 @@ Gir en payload på følgende resultat
 
 */
 
-const getIdFromUrl = url => {
+const getIdFromUrl = (url) => {
   return url.split("/").slice(-2)[0];
-}
+};
 
 export const getPokemon = () => {
-  return fetch(`https://pokeapi.co/api/v2/pokemon-form?offset=${Math.floor(Math.random() * 103)}&limit=22`)
+  return fetch(
+    `https://pokeapi.co/api/v2/pokemon-form?offset=${Math.floor(
+      Math.random() * 103
+    )}&limit=22`
+  )
     .then((res) => res.json())
-    .then((data) => data.results.map(({ name, url }) => ({ name, id: getIdFromUrl(url) })));
+    .then((data) =>
+      data.results.map(({ name, url }) => ({ name, id: getIdFromUrl(url) }))
+    );
 };
 
 export const getPokemonId = (name) => {

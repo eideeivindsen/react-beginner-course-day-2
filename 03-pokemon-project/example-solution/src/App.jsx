@@ -12,14 +12,14 @@ const App = () => {
 
   const handleSelectPokemon = (pokemon) => {
     setSelectedPokemon([...selectedPokemon, pokemon].slice(-2));
-  }
+  };
 
   const handleGetPokemon = () => {
     setSelectedPokemon([]);
     HelperAPI.getPokemon().then((pokemon) => {
       setPokemonList(pokemon);
     });
-  }
+  };
 
   useEffect(() => {
     handleGetPokemon();
@@ -31,10 +31,14 @@ const App = () => {
     <div className="App">
       <Title />
       <button onClick={handleGetPokemon}>Refresh</button>
-      <PokemonGallery pokemonList={pokemonList} selectedPokemon={selectedPokemon} handleSelectPokemon={handleSelectPokemon} />
+      <PokemonGallery
+        pokemonList={pokemonList}
+        selectedPokemon={selectedPokemon}
+        handleSelectPokemon={handleSelectPokemon}
+      />
       <FusedPokemon first={firstSelected} second={secondSelected} />
     </div>
   );
-}
+};
 
 export default App;

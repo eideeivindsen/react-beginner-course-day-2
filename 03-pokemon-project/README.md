@@ -10,37 +10,37 @@ Hi and welcome to **Project Pokemon Fusion**. In this module of our react course
 Our thought process went something like this: To grasp React, our course-participants must develop an application with an external API. Getting hands-on experience for how React uses real data and external APIs is crucial, and thus we chose to create something with the nostalgic feel of pokemon.
 
 
-## Specc and goals
+## Spec and goals
 
 The main goal is that the participant should gain knowledge in the following areas of React.
 
-* Thinking in components (reusable pieces of code and GUI-elements)
+* Thinking in React; Components and modularity (reusable pieces of code and GUI-elements)
 * Sending properties (props) from component to component (Parent / Child relationship)
 * Be able to create interactivity with common hooks (useEffect and useState) and asynchronous HTTP-requests
 
-### Top level specc
+### Top level spec
 
-This is the top-level specc for the application. What should **Pokemon Fusion** do?
+This is the top-level spec for the application. What should **Pokemon Fusion** do?
 
-* The application must get and store information about an array of Pokemon.
-* The application must use the external pokemon-API
-* The application should split application-logic into reusable components
-* The application must be able to handle click events. Which pokemon does the user want to fuse?
-* The application must handle a click event that fuses the chosen pokemon.
+* Fetch and store information about an array of Pokemon.
+* Use the external pokemon-API
+* Split application-logic into reusable components
+* Handle click events. Which pokemon does the user want to fuse?
+* Handle a click event that fuses the chosen pokemon.
 * The UX should be as simple as possible
 
 
 ## The guide
 
-### Part 1: HelperAPI, datastructures and App.tsx
+### 📌 Part 1: HelperAPI, datastructures and App.tsx
 
 Part 1 will introduce the datastructrues we're working with, the `HelperAPI` we've made to help with abstactring away http-requests in a more seamless fashion and working with `App.tsx` in the initial start. 
 
 #### HelperAPI and datastructures
 
-Before we begin coding, here's an overview over which kind of data we're working with, i.e. our datastructure.
+Before we begin coding, here's a preview of the data.
 
-here's a payload from the pokeAPI. The `results` property contains an array of objects. These objects has a `name` property we're going to use extensively throughout our application.
+Below is a payload from the pokeAPI. The `results` property contains an array of objects. These objects have a `name` property we're going to use extensively throughout our application.
 
 ```js
 {
@@ -64,7 +64,7 @@ here's a payload from the pokeAPI. The `results` property contains an array of o
 }
 ```
 
-We have provided a `HelperAPI` that does a lot of the work behind the scenes, but you must handle the Promise by yourself. Our HelperAPI contains the following methods, and can be used in the following way:
+We have provided a `HelperAPI` that does a lot of the work behind the scenes, but you must handle the Promise yourself. Our HelperAPI contains the following methods, and can be used in the following way:
 
 
 ```jsx
@@ -78,7 +78,7 @@ const App = () => {
   // use the helper API + component logic
 };
 ```
-Examples for handling a the Promises given by the helper functions.
+Examples for handling a Promises given by the helper functions.
 
 ```jsx
 HelperAPI.getPokemon().then(pokemonNames => setPokemonNames(pokemonNames));
@@ -88,7 +88,7 @@ HelperAPI.getPokemonId("mew").then(id => setPokemonId(id));
 #### **App.tsx**
 
 In App.tsx do the following:
-- Create component state that keeps track of all the pokemon from the API-request.
+- Create component state that store all the pokemon from the API-request `HelperAPI.getPokemon()`.
 - The request must be called on the first render only.
 
 <details><summary>🔑 Solution</summary>
@@ -110,6 +110,7 @@ function App() {
   return (
     <div className="App">
       Example application
+      <p>{pokemonList.length}</p>
     </div>
   );
 }
@@ -123,7 +124,7 @@ export default App;
 #### **Create a fitting title**
 
 Create a new file called: `Title.jsx`
-Make it create a fitting title, and use the component in App.tsx
+Make it render a fitting title. Use the component in App.tsx
 
 <details><summary>🔑 Solution</summary>
 <br>
@@ -169,16 +170,16 @@ export default App;
 
 
 
-### Part 2: Display all your pokemon on screen
+### 📌 Part 2: Display all your pokemon on screen
 
-We want to display all the photos for all the pokemons we now have stored in our `pokemonList` state. Remember, pokemonList is an array of names.
+We want to display all the photos for all the pokemons we now have stored in our state. Remember, the state is an array of names.
 
-Lets create a new file called `PokemonDisplayer.jsx`
+Lets create a new file called `PokemonGallery.jsx`
 
-`PokemonDisplayer` should do the following:
+`PokemonGallery` should do the following:
 - Recieve a list of pokemon-names as a property
-- Map over these names, return divs displaying the name
-- Pass our list of pokemon names as a prop from `App.tsx`
+- Map over these names, for each name return a div displaying the name
+- Pass the list of pokemon names as a prop from `App.tsx`
 
 A reiteration for how one can pass props to a component, and make that component use the recieved props
 
@@ -196,10 +197,10 @@ const MyComponent = ({ propName }) => {
 <br>
 
 ```jsx
-// PokemonDisplayer.jsx
+// PokemonGallery.jsx
 import React from "react";
 
-const PokemonDisplayer = ({ pokemonList }) => {
+const PokemonGallery = ({ pokemonList }) => {
   return (
     <div>
       {pokemonList.map(name => (
@@ -216,7 +217,7 @@ import React, { useState, useEffect } from "react";
 import HelperAPI from "./HelperAPI";
 
 import Title from "./Title";
-import PokemonDisplayer from "./PokemonDisplayer";
+import PokemonGallery from "./PokemonGallery";
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -230,7 +231,7 @@ function App() {
   return (
     <div className="App">
       <Title />
-      <PokemonDisplayer pokemonList={pokemonList} />
+      <PokemonGallery pokemonList={pokemonList} />
     </div>
   );
 }
@@ -251,7 +252,7 @@ Create a new file called: `Pokemon.jsx`. `<Pokemon />` should do the following:
 - Create state that can store and capture it's `id`
 - Request the pokemonId with HelperAPI on initial render (useEffect)
 - Display the image of an pokemon.
-- Update `PokemonDisplayer` to use the new `Pokemon` component instead of displaying names
+- Update `PokemonGallery` to use the new `Pokemon` component instead of displaying names
 
 <details><summary>🔑 Solution</summary>
 <br>
@@ -285,11 +286,11 @@ export default Pokemon;
 ```
 
 ```jsx
-// PokemonDisplayer.jsx
+// PokemonGallery.jsx
 import React from "react";
 import Pokemon from "./Pokemon";
 
-const PokemonDisplayer = ({ pokemonList }) => {
+const PokemonGallery = ({ pokemonList }) => {
   return (
     <div className="pokeContainer">
       {pokemonList.map(name => (
@@ -299,14 +300,17 @@ const PokemonDisplayer = ({ pokemonList }) => {
   );
 };
 
-export default PokemonDisplayer;
+export default PokemonGallery;
 ```
 </details>
 <br />
 
+### 📌 Part 4: The Fusion
 
-### Part 3: onClick events and passing functions as props
 
-### Part 4: <Insert Title>
+
+### 📌 Part 3: onClick events and passing functions as props
+
+### 📌 Part 4: The Fusion
 ...
-### Part N: <Title N>
+### 📌 Part N: <Title N>

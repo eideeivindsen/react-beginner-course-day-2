@@ -462,3 +462,47 @@ export default App;
 
 </details>
 <br><br>
+
+### 💎 Bonus 1: Toggle fuse combination
+
+As you may have discovered, two pokemon can be fused together in two different ways. In this bonus task, we will implement functionality to switch between the two combinations by clicking on the fused pokemon.
+
+Alter the `FusedPokemon` to have the following functionality:
+- A `toggle` state and a `handleToggle()` function that changes each time the fused pokemon is clicked.
+- A new array that copies `first` and `second` in different orders based on `toggle` and use this new array to render name and image to the `<Avatar />` component.
+
+
+<br>
+<details><summary>🔑 Solution</summary>
+<br>
+
+```jsx
+// FusedPokemon.jsx
+import React, { useState } from 'react';
+import Avatar from './Avatar';
+
+const FusedPokemon = ({ first = null, second = null }) => {
+    const [toggle, setToggle] = useState(false)
+
+    const handleToggle = () => setToggle(toggle => !toggle);
+    
+    const [one, two] = toggle ? [first, second] : [second, first]
+
+    return first && second &&
+    <div onClick={handleToggle}>
+        <Avatar
+            className="fusedPokemon"
+            name={one.name.substring(0, Math.ceil(one.name.length / 2))
+                + two.name.substring(Math.floor(two.name.length / 2))
+            }
+            imageUrl={`https://images.alexonsager.net/pokemon/fused/${one.id}/${one.id}.${two.id}.png`}
+        />
+    </div>
+}
+
+export default FusedPokemon;
+```
+
+
+</details>
+<br><br>

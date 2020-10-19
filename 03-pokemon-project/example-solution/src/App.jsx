@@ -6,7 +6,7 @@ import PokemonGallery from "./PokemonGallery";
 import Title from "./Title";
 import FusedPokemon from "./FusedPokemon";
 
-function App() {
+const App = () => {
   const [pokemonList, setPokemonList] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState([]);
 

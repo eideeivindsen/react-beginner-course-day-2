@@ -6,8 +6,8 @@ const PokemonGallery = ({ pokemonList, selectedPokemon, handleSelectPokemon }) =
     <div className="gallery-container">
       {pokemonList.map(({ name, id }) => {
         return <div
-          key={name}
-          className={selectedPokemon.some(selected => selected.name === name) ? "selected" : "unselected"}
+          key={id}
+          className={selectedPokemon.some(selected => selected.id === id) ? "selected" : ""}
           onClick={() => handleSelectPokemon({ name, id })}
         >
           <Avatar

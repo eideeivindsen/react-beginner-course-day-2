@@ -37,7 +37,7 @@ const getIdFromUrl = url => {
 }
 
 export const getPokemon = () => {
-  return fetch(`https://pokeapi.co/api/v2/pokemon-form?offset=${Math.floor(Math.random() * 1000)}&limit=48`)
+  return fetch(`https://pokeapi.co/api/v2/pokemon-form?offset=${Math.floor(Math.random() * 103)}&limit=22`)
     .then((res) => res.json())
     .then((data) => data.results.map(({ name, url }) => ({ name, id: getIdFromUrl(url) })));
 };

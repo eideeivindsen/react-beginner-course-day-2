@@ -1,18 +1,10 @@
+@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Pokemon"
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.pokeContainer {
+.gallery-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -23,6 +15,7 @@ code {
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
+  text-overflow: clip;
 }
 
 img {
@@ -31,16 +24,25 @@ img {
   height: auto;
 }
 
+.title {
+  color: #FFCB05;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #3A5DA8;
+  font-size: 100px;
+  margin: 0;
+  padding: 0;
+}
+
 .avatar {
   display: inline-block;
-  margin: 20px;
+  margin: 15px;
   text-align: center;
 }
 
 .name {
   font-size: 20px;
   font-family: monospace;
-}
+} 
 
 .profilepic {
   width: 100px;
@@ -49,6 +51,11 @@ img {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   image-rendering: -moz-crisp-edges;
+}
+
+.profilepic.fusedPokemon {
+    width: 250px;
+    height: 250px;
 }
 
 .App {

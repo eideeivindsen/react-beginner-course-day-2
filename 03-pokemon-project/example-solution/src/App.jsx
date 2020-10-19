@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import HelperAPI from "./HelperAPI";
 import PokemonGallery from "./PokemonGallery";
-import FusePokemon from "./FusePokemon";
 import Title from "./Title";
 import FusedPokemon from "./FusedPokemon";
 
@@ -11,23 +10,19 @@ function App() {
   const [pokemonList, setPokemonList] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState([]);
 
-  const handleSelectPokemon = (name) => {
-    if (selectedPokemon.length === 2) {
-      setSelectedPokemon(selectedPokemon.filter(n => n !== name))
-      return;
-    }
-    if (selectedPokemon.length === 1 && selectedPokemon.includes(name)) {
-      setSelectedPokemon([]);
-      return;
-    }
-
-    setSelectedPokemon([...selectedPokemon, name]);
+  const handleSelectPokemon = (pokemon) => {
+    setSelectedPokemon([...selectedPokemon, pokemon].slice(-2));
   }
 
-  useEffect(() => {
+  const handleGetPokemon = () => {
+    setSelectedPokemon([]);
     HelperAPI.getPokemon().then((pokemon) => {
       setPokemonList(pokemon);
     });
+  }
+
+  useEffect(() => {
+    handleGetPokemon();
   }, []);
 
   const [firstSelected, secondSelected] = selectedPokemon;
@@ -35,8 +30,9 @@ function App() {
   return (
     <div className="App">
       <Title />
-      <button>Clear fusion</button>
+      <button onClick={handleGetPokemon}>Refresh</button>
       <PokemonGallery pokemonList={pokemonList} selectedPokemon={selectedPokemon} handleSelectPokemon={handleSelectPokemon} />
+      <FusedPokemon first={firstSelected} second={secondSelected} />
     </div>
   );
 }

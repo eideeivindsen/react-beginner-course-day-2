@@ -305,12 +305,10 @@ export default PokemonGallery;
 </details>
 <br />
 
-### 📌 Part 4: The Fusion
+### 📌 Part 3: The Fusion
 
+### 📌 Part 4: onClick events and passing functions as props
 
-
-### 📌 Part 3: onClick events and passing functions as props
-
-### 📌 Part 4: The Fusion
+### 📌 Part 5: The Fusion
 ...
 ### 📌 Part N: <Title N>

@@ -6,6 +6,7 @@
   "scripts": {
     "setup": "cd 00-recap && npm install && cd 00-solution && npm install && cd ../../01-use-effect && npm install && cd ../02-http && npm install && cd ../03-pokemon-project && npm install && cd example-solution && npm install",
     "00": "cd 00-recap && npm start",
+    "01": "cd 01-use-effect && npm start",
     "00s": "cd 00-recap/00-solution && npm start"
   },
   "repository": {

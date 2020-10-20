@@ -1,37 +1,3 @@
-// https://pokeapi.co/api/v2/pokemon-form/1/
-
-/*
-Gir en payload med følgende resultat
-
-{
-    ...data,
-    name: PokemonName
-    id: PokeId,
-    sprites: {
-        // bildeURLer
-    }
-}
-*/
-
-// Favorittendepunkt https://pokeapi.co/api/v2/pokemon-form?offset=0&limit=151
-/*
-Gir en payload på følgende resultat
-
-{
-    count: Number,
-    next: "Link til neste page",
-    previous: null,
-    results: [
-        {
-            name: PokemonName,
-            url: Lenke til pokemon info
-        },
-        ...rest
-    ]
-}
-
-*/
-
 const getIdFromUrl = url => parseInt(url.split("/").slice(-2)[0]);
 
 const getPokemonFromNameAndUrl = ({ name, url }) => {

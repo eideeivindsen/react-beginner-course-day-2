@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import Avatar from "./Avatar";
-import pokemonList from "./pokemon";
+import Avatar from "./Avatar"
+import pokemonList from "./pokemon"
 
 const Pokemon = ({ first, second, third }) => {
-  const [pokeState, setPokeState] = useState(0);
+  const [pokeState, setPokeState] = useState(1)
 
   const handleClick = () => {
-    setPokeState(pokeState < 2 ? pokeState + 1 : 0);
+    setPokeState(pokeState < 3 ? pokeState + 1 : 1)
   }
 
   return <div onClick={handleClick}>
-    {pokeState === 0 && <Avatar {...first} />}
-    {pokeState === 1 && <Avatar {...second} />}
-    {pokeState === 2 && <Avatar {...third} />}
+    { pokeState === 1 && <Avatar {...first} /> }
+    { pokeState === 2 && <Avatar {...second} /> }
+    { pokeState === 3 && <Avatar {...third} /> }
+    <img src={second.imageUrl} style={{position: "fixed", opacity: 0}} />
+    <img src={third.imageUrl} style={{position: "fixed", opacity: 0}} />
   </div>
 }
 
 const App = () => <>
-  {pokemonList.map(({ id, ...pokemon }) => <Pokemon key={id} {...pokemon} />)}
+  { pokemonList.map(({ id, ...pokemon }) => <Pokemon key={id} {...pokemon} />) }
 </>
 
-export default App;
+export default App

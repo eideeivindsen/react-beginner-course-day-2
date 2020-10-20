@@ -133,7 +133,7 @@ The first thing we want to do is using the `helperAPI` to fetch pokemon for our 
 
 ```jsx
 // App.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Title from "./Title";
 import HelperAPI from "./HelperAPI";
 

@@ -439,6 +439,7 @@ export default FusedPokemon;
 // App.jsx
 
 // ...imports
+import FusedPokemon from "./FusedPokemon";
 
 const App = () => {
   const [pokemonList, setPokemonList] = useState([]);

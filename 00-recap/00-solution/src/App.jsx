@@ -19,8 +19,9 @@ const Pokemon = ({ first, second, third }) => {
   </div>
 }
 
-const App = () => <>
-  { pokemonList.map(({ id, ...pokemon }) => <Pokemon key={id} {...pokemon} />) }
-</>
+const App = () => 
+  pokemonList.map(({ id, ...pokemon }) =>
+   <Pokemon key={id} {...pokemon} />
+  )
 
 export default App

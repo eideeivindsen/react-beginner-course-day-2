@@ -40,9 +40,10 @@ Remember to give each component in the list a `key` prop. Destructure the variab
 <details><summary>💡 Hint</summary>
 
 ```jsx
-const App = () => <>
-  { pokemonList.map(({ /* destructure */ }) => <Avatar key={ /* key */ } { ...first } />) }
-</>
+const App = () =>
+  pokemonList.map(({ /* destructure */ }) =>
+    <Avatar key={ /* key */ } { ...first } />
+  )
 ```
 </details>
 
@@ -54,9 +55,10 @@ import React, { useState } from 'react'
 import Avatar from "./Avatar"
 import pokemonList from "./pokemon"
 
-const App = () => <>
-  { pokemonList.map(({ id, first }) => <Avatar key={id} {...first} />) }
-</>
+const App = () =>
+  pokemonList.map(({ id, first }) =>
+    <Avatar key={id} {...first} />
+  )
 
 export default App
 ```
@@ -90,9 +92,10 @@ const Pokemon = ({ first, second, third }) => {
   </>
 }
 
-const App = () => <>
-  { pokemonList.map(({ id, ...pokemon }) => <Pokemon key={id} {...pokemon} />) }
-</>
+const App = () =>
+  pokemonList.map(({ id, ...pokemon }) =>
+    <Pokemon key={id} {...pokemon} />
+  )
 
 export default App
 ```
@@ -136,8 +139,9 @@ const Pokemon = ({ first, second, third }) => {
 }
 
 const App = () => <>
-  { pokemonList.map(({ id, ...pokemon }) => <Pokemon key={id} {...pokemon} />) }
-</>
+  pokemonList.map(({ id, ...pokemon }) =>
+    <Pokemon key={id} {...pokemon} />
+  )
 
 export default App
 ```
@@ -183,7 +187,9 @@ const Pokemon = ({ first, second, third }) => {
 }
 
 const App = () => <>
-  { pokemonList.map(({ id, ...pokemon }) => <Pokemon key={id} {...pokemon} />) }
+  pokemonList.map(({ id, ...pokemon }) =>
+    <Pokemon key={id} {...pokemon} />
+  )
 </>
 
 export default App
@@ -225,9 +231,10 @@ const Pokemon = ({ first, second, third }) => {
   </div>
 }
 
-const App = () => <>
-  { pokemonList.map(({ id, ...pokemon }) => <Pokemon key={id} {...pokemon} />) }
-</>
+const App = () =>
+  pokemonList.map(({ id, ...pokemon }) =>
+    <Pokemon key={id} {...pokemon} />
+  )
 
 export default App
 ```

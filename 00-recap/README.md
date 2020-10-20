@@ -108,6 +108,8 @@ We now have a complete Pokédex displaying all the pokemon. Instead, only displa
 
 Inside the `Pokemon` component, create a state called `pokeState` with the inital value `1`. Then conditionally render only one of the three avatars inside the component, depending on the value of the state.
 
+When finished, replace the initial state with `2` and save. All the pokemon should update. Now try with `3` and then finally go back to `1` before moving on.
+
 <details><summary>💡 Hint</summary>
 
 ```jsx
@@ -138,7 +140,7 @@ const Pokemon = ({ first, second, third }) => {
   </>
 }
 
-const App = () => <>
+const App = () =>
   pokemonList.map(({ id, ...pokemon }) =>
     <Pokemon key={id} {...pokemon} />
   )
@@ -186,11 +188,10 @@ const Pokemon = ({ first, second, third }) => {
   </div>
 }
 
-const App = () => <>
+const App = () =>
   pokemonList.map(({ id, ...pokemon }) =>
     <Pokemon key={id} {...pokemon} />
   )
-</>
 
 export default App
 ```

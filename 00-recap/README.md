@@ -190,9 +190,17 @@ export default App
 ```
 </details>
 
+<br><br>
+
 #### 💎 Task 6 - Remove the slight delay between clicking a Pokemon and showing the next
 The first time a Pokemon is clicked, the browser will have to fetch the next image. Avoid this by preloading all images when the application begins. You can accomplish this by creating an invisible `img` element with the `src` you want to prefetch.
 
+<details><summary>💡 Hint</summary>
+
+```jsx
+<img src={} style={{position: "fixed", opacity: 0}} />
+```
+</details>
 <details><summary>🔑 Solution</summary>
 
 ```jsx

@@ -14,8 +14,8 @@ const Pokemon = ({ first, second, third }) => {
     { pokeState === 1 && <Avatar {...first} /> }
     { pokeState === 2 && <Avatar {...second} /> }
     { pokeState === 3 && <Avatar {...third} /> }
-    <img src={second.imageUrl} style={{position: "fixed", opacity: 0}} />
-    <img src={third.imageUrl} style={{position: "fixed", opacity: 0}} />
+    <img src={second.imageUrl} style={{width: 0}} />
+    <img src={third.imageUrl} style={{width: 0}} />
   </div>
 }
 

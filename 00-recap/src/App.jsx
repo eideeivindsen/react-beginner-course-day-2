@@ -4,8 +4,6 @@ import Avatar from "./Avatar"
 import pokemonList from "./pokemon"
 
 
-const App = () => <>
-  
-</>
+const App = () => "Pokédex"
 
 export default App

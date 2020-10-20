@@ -32,29 +32,28 @@ Gir en payload på følgende resultat
 
 */
 
-const getIdFromUrl = (url) => {
-  return url.split("/").slice(-2)[0];
-};
+const getIdFromUrl = url => parseInt(url.split("/").slice(-2)[0]);
 
-export const getPokemon = () => {
+const getPokemonFromNameAndUrl = ({ name, url }) => {
+  const id = getIdFromUrl(url);
+  return {
+    name,
+    id,
+    imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
+    apiUrl: url,
+  };
+}
+
+const getPokemon = () => {
   return fetch(
     `https://pokeapi.co/api/v2/pokemon-form?offset=${Math.floor(
       Math.random() * 103
     )}&limit=22`
   )
-    .then((res) => res.json())
-    .then((data) =>
-      data.results.map(({ name, url }) => ({ name, id: getIdFromUrl(url) }))
-    );
-};
-
-export const getPokemonId = (name) => {
-  return fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-    .then((res) => res.json())
-    .then((data) => new Promise((resolve) => resolve(data.id)));
+    .then(res => res.json())
+    .then(data => data.results.map(getPokemonFromNameAndUrl));
 };
 
 export default {
   getPokemon,
-  getPokemonId,
 };

@@ -50,25 +50,26 @@ HelperAPI.getPokemon().then((data) => {
 Below is a payload from the `HelperAPI.getPokemon()` API-request. The data contains an array of pokemon objects. Each object contains three properties: `name`, `id` and `imageUrl`.
 
 ```js
-{[
-    {
-      "name": "bulbasaur",
-      "id": 1,
-      "imageUrl": "https://pokeapi.co/api/v2/pokemon/1.png"
-    },
-    {
-      "name": "ivysaur",
-      "id": 2,
-      "imageUrl": "https://pokeapi.co/api/v2/pokemon/2.png"
-    },
-    {
-      "name": "venusaur",
-      "id": 3,
-      "imageUrl": "https://pokeapi.co/api/v2/pokemon/3.png"
-    },
-    ...
-  ]
-}
+[
+  {
+    "name": "bulbasaur",
+    "id": 1,
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+    "apiUrl": "https://pokeapi.co/api/v2/pokemon-form/1/"
+  },
+  {
+    "name": "ivysaur",
+    "id": 2,
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+    "apiUrl": "https://pokeapi.co/api/v2/pokemon-form/2/"
+  },
+  {
+    "name": "venusaur",
+    "id": 3,
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+    "apiUrl": "https://pokeapi.co/api/v2/pokemon-form/3/"
+  }
+]
 ```
 
 <br>
@@ -221,7 +222,7 @@ The `PokemonGallery` must now have the following functionality:
 - Iterate over the `pokemonList` to return a `<Avatar />` components for each pokemon.
   - Wrap each avatar with a `div`.
 - Each `Avatar` component must recieve the props: `name` and `imageUrl` from each pokemon.
-  - The `imageUrl` will be used to get an image of a pokemon. i.e. `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`.
+  - The `imageUrl` from the api will be used to get an image of a pokemon. i.e. `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png`.
 
 <br>
 <details><summary>🔑 Solution</summary>
@@ -235,12 +236,12 @@ import Avatar from "./Avatar";
 const PokemonGallery = ({ pokemonList }) => {
   return (
     <div className="gallery-container">
-      {pokemonList.map(({ name, id }) => {
+      {pokemonList.map(({ name, id, imageUrl }) => {
         return (
           <div key={id}>
             <Avatar
               name={name}
-              imageUrl={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+              imageUrl={imageUrl}
             />
           </div>
         );
@@ -365,7 +366,7 @@ const PokemonGallery = ({
 }) => {
   return (
     <div className="gallery-container">
-      {pokemonList.map(({ name, id }) => {
+      {pokemonList.map(({ name, id, imageUrl }) => {
         return (
           <div
             key={id}
@@ -378,7 +379,7 @@ const PokemonGallery = ({
           >
             <Avatar
               name={name}
-              imageUrl={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+              imageUrl={imageUrl}
             />
           </div>
         );

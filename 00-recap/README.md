@@ -148,7 +148,7 @@ export default App
 #### 📌 Task 5 - Create a `handleClick` function that updates the state
 The `handleClick` function should increase the `pokeState` by one, and set it back to `1` instead of going out of range.
 
-Inside the `Pokemon` component, replace the fragments `<> </>` with a clickable `<div> </div>` element and add the `handleClick` as on `onClick`.
+Inside the `Pokemon` component, replace the fragments `<> </>` with a clickable `<div> </div>` element and add the `handleClick` as `onClick`.
 
 When you are done, try clicking some Pokémon to see what they evolve into. 
 
@@ -198,7 +198,7 @@ The first time a Pokemon is clicked, the browser will have to fetch the next ima
 <details><summary>💡 Hint</summary>
 
 ```jsx
-<img src={} style={{position: "fixed", opacity: 0}} />
+<img src={} style={{width: 0}} />
 ```
 </details>
 <details><summary>🔑 Solution</summary>
@@ -220,8 +220,8 @@ const Pokemon = ({ first, second, third }) => {
     { pokeState === 1 && <Avatar {...first} /> }
     { pokeState === 2 && <Avatar {...second} /> }
     { pokeState === 3 && <Avatar {...third} /> }
-    <img src={second.imageUrl} style={{position: "fixed", opacity: 0}} />
-    <img src={third.imageUrl} style={{position: "fixed", opacity: 0}} />
+    <img src={second.imageUrl} style={{width: 0}} />
+    <img src={third.imageUrl} style={{width: 0}} />
   </div>
 }
 

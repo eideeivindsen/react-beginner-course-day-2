@@ -10,217 +10,82 @@ From the [mozilla developer page](https://developer.mozilla.org/en-US/docs/Web/J
 
 Hence the "eventual completion" is you as a customer "waiting" for the package to arrive, and the resulting value of that operation is your actual package.
 
-Lets say we have some sort of external API that gives us some data. That API-call needs to travel for a certain amount of time. The time needed to retreive data often relies on factors such as: internet speed, signal and geolocation of servers. By having these factors, the time it takes for a web-application to recieve some data can be from a few milliseconds, to entire seconds.
+Lets say we have some sort of external API that gives us some data. That API-call needs to travel for a certain amount of time. The time needed to retreive data often relies on factors such as: internet speed, signal strength and geolocation of servers. By having these factors, the time it takes for a web-application to recieve some data can be from a few milliseconds, to entire seconds.
 
-If it takes an entire week for your package to arrive, you're absolutely going to enjoy your life while it travels (i.e. buying an item online is an asynchronous request, you do not get the item immediately). The same applies to the web-application; the application want to continue living its life.
+If it takes an entire week for your package arrives, you're absolutely going to enjoy your life while it travels (i.e. buying an item online is an asynchronous request, you do not get the item immediately). The same applies to the web-application; the application want to continue living its life uninterrupted.
 
-Syntactically a Promise looks like this, and it's an object.
+Below is a Promise, and it's an object.
 
 ```jsx
 Promise((resolve, reject) => {
     /*
     resolve() return the data / item you want to deliver, if it succeeds (the result)
-    reject() the thing you want to deliver, if it goes wrong
+    reject() return information about something you want to deliver, if it goes wrong
     */
 })
 ```
 
-Lets look at the `fetch()` HTTP-client that is built into the javascript API. The documentation clearly states that the `fetch()` function returns a Promise. The call to the `url` takes a few ms to a second.
-
-```js
-const promise = fetch(url, options)
-```
-
-
-#### 📌 A1 - Create a counter.
-
-Create a component that keeps track of a count. Create buttons that increments and decrements the value of the count with the use of the `onClick` event.
-
-<details><summary>🔑 Solution</summary>
-<br>
-
-Solution 1: Inline setState functions directly in the JSX-abbreviation of the `<button>` html element
-```jsx
-const Counter = () => {
-    const [count, setCount] = useState(0);
-
-    return (
-    <React.Fragment>
-        <h1>My count: {count}</h1>
-        <button onClick={() => setState(count + 1)}>Increment by 1</button>
-        <button onClick={() => setState(count + 1)}>Decrement by 1</button>
-    <React.Fragment>
-    )
-}
-```
-
-<br>
-
-Solution 2: Creating named functions.
-<br>
+The Promise have two important functions. These are `resolve` and `reject`. To emphazise how these functions work, I will re-create the `fetch` http-client from javaScript with pseudo-code.
 
 ```jsx
-const Counter = () => {
-    const [count, setCount] = useState(0);
+const fetch = (url, params) => new Promise((resolve, reject) => {
+    // use some method to get data from the given url
+    // wait for all of that data to arrive, sequentially.
+    // resolve the payload
+    if(/* If we did not get any errors while getting the data*/)
+        // resolve the payload.
+        resolve(payload);
+    }
 
-    const increment = () => setCount(count + 1);
-    
-    const decrement = () => setCount(count - 1);
-
-    return (
-    <React.Fragment>
-        <h1>My count: {count}</h1>
-        <button onClick={increment}>Increment by 1</button>
-        <button onClick={decrement}>Decrement by 1</button>
-    <React.Fragment>
-    )
-}
-```
-
-<br>
-
-Solution 3 securing correct state.
-
-```jsx
-const Counter = () => {
-    const [count, setCount] = useState(0);
-
-    const increment = () => setCount(prevCount => prevCount + 1);
-    
-    const decrement = () => setCount(prevCount => prevCount - 1);
-
-    return (
-    <React.Fragment>
-        <h1>My count: {count}</h1>
-        <button onClick={increment}>Increment by 1</button>
-        <button onClick={decrement}>Decrement by 1</button>
-    <React.Fragment>
-    )
-}
-```
-</details>
-
-<br>
-
-#### 📌 A2 - Rectangle changing color.
-
-Create a rectangle that changes color when your mouse hovers over the element.
-
-tips: `onMouseEnter` and `onMouseLeave` events.
-
-rectangle div styles
-
-```js
-<div style={{width: 250, height: 250, backgroundColor: /* white, blue, black, yellow, purple  */}}>
-</div>
-```
-
-<details><summary>🔑 Solution</summary>
-<br>
-
-The state defined by useState has the naming convention offered by JS-Objects. i.e.
-
-```js
-const backgroundColor = "white";
-
-const myObject = {
-    backgroundColor: backgroundColor
-}
-
-//shorthand
-const myObjectWithShorthand = { backgroundColor }
-
-// myObject === myObjectWithShortand (true)
-```
-```jsx
-const Counter = () => {
-    const [backgroundColor, setBackgroundColor] = useState("white");
-
-    const handleMouseEnter = () => setBackgroundColor("purple");
-
-    const handleMouseLeave = () => setBackgroundColor("white");
-
-    return (
-    <React.Fragment>
-        <div
-        style={{width: 250, height: 250, backgroundColor}}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        >
-        </div>
-    <React.Fragment>
-    )
-}
-```
-</details>
-
-<br>
-
-#### 💎 Combine A1 and A2 by using a single state Object
-
-Use A1 and A2 and combine both their states into a javaScript-Object. The main component should include the behaviour from A1 and A2; incrementing and decrementing a count, and a `<div>` that changes color when hovering over it. This exercise focus on becoming comfortable with the usage and handling of javascript objects. 
-
-<details><summary>🔑 Solution</summary>
-
-The solution can be written in numerous ways based on javascript preferences with objects and function handling.
-All the examples are doing the exact same. 
-
-```jsx
-setState({ backgroundColor, count}) => {
-    return { backgroundColor, count: count + 1}
+    // if there is some kind of error from the http-request
+    // call the reject function to "reject" the Promise. Your promise did not hold.
+    reject(new Error());
 })
-
-setState(prevState => {
-    return { ...prevState, count: prevState.count + 1}
-});
-
-setState(prevState => {
-    return { backgroundColor: prevState.backgroundColor, count: prevState.count + 1 }
-})
-
-//Personal favorite by always destructuring and using shorthand object return. if the state object is large, update only the object entry that you want.
-
-setState(({ count, ...prevState}) => ({ ...prevState, count: count + 1}))
 ```
-<br>
+
+Lets say we have some javaScript code that fetch some data. How are we going to retreieve that data? Our initial execute with `fetch()` is a function that returns a Promise that will eventually complete.
+
+```jsx
+const url = "example.com";
+
+const promise = fetch(url);
+
+// continue program
+```
+
+Let us think about the `reject` and `resolve` function. Remember: the Promise will eventually complete. Lets introduce the concept functional programming, and adding a  `then(() => {})`
+to our Promise. We can now access the resolved values from the Promise, without blocking our code!
+
+```jsx
+
+const promise = fetch(url);
+
+promise.then(res => {
+        // do something with our responses, maybe use a setState function?
+    });
+
+// or chaining directly
+
+fetch(url).then(res => {
+    // do something with the response
+})
+```
+
+How can this look like in React? Let us add a useEffect on a component to retreieve data on load.
 
 ```jsx
 const App = () => {
-  const [state, setState] = useState({ backgroundColor: "white", count: 0 })
 
-  const increment = () => setState(prevState => {
-    return { backgroundColor: prevState.backgroundColor, count: prevState.count + 1 }
-  });
-  
-  const decrement = () => setState(({ count, ...prevState}) => ({
-    ...prevState, count: count - 1})
-  )
+    const [state, setState] = useState(null);
 
-  const handleMouseEnter = () => setState(prevState => ({
-      count: prevState.count, backgroundColor: "purple"
-  }));
+    useEffect(() => {
+        // executing the function, immediately returns a Promise
+        fetch("example.com")
+            .then(res => res.json()) // adding a .then(), that executes when the Promise has resolved
+            .then(data => setState(data)) // retrieveing data when res.json() has resolved, and setting data with setData;
+    },[])
 
-  const handleMouseLeave = () => setState(prevState =>  ({
-      ...prevState, backgroundColor: "white"
-  }));
-
-  const {
-      count,
-      backgroundColor
-  } = state;
-
-  return (
-      <React.Fragment>
-          <div
-          style={{width: 250, height: 250, backgroundColor}}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          />
-          <h1>My count: {count}</h1>
-          <button onClick={increment}>Increment by 1</button>
-          <button onClick={decrement}>Decrement by 1</button>
-      </React.Fragment>
-  )
+    return <div> {/* your data display */}</div>
 }
 ```
-</details>
+

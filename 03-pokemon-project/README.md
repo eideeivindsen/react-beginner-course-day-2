@@ -1,5 +1,7 @@
 # Pokemon Fusion Project
 
+Project demo of the final product [PokemonFusion](https://react-kurs-dag2.web.app)
+
 ## Project description
 
 Hi and welcome to **Project Pokemon Fusion**. In this module of our react course, we will be making a web-application that fuses two pokemon together into a fused version! The project will use an external API that has information about every single pokemon that exists.

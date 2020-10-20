@@ -10,7 +10,7 @@ Hei og velkommen til introduksjonskurs i React del 2!
 ## Kom igang!
 * `git clone https://github.com/react-kurs/dag2.git`
 * `cd dag2`
-* `npm run setup` (installer alt i alle mapper på 2-3 min)
+* `npm run setup` (installer alt i alle mapper på 3-6 min)
 * `code .` (for å åpne mappen i Visual studio code, hvis kommandoen er aktivert)
 
 ## Intro

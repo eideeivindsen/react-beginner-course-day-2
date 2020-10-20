@@ -33,15 +33,15 @@ Run `npm run 00` from the project root and open `00-recap/src/App.jsx` is VS Cod
 <br><br>
 
 #### 📌 Task 2 - Render the first pokemon in each evolution
-Use the `<Avatar name={} imageUrl={} />` component created the first day to display a Pokémon. Map each evolution of three Pokémon in `pokemonList` to an `Avatar` displaying only the first Pokémon in each evolutionary chain.
+Use the `<Avatar name={} imageUrl={} />` component created the first day to display Pokémon. Map each evolution of three Pokémon in `pokemonList` to an `Avatar` displaying only the first Pokémon in each evolutionary chain.
 
-Remember to give each component in the list a `key` prop. Destructure the variables when mapping the list.
+Remember to give each component in the list a `key` prop. Destructure the variables when mapping the list. As the Pokémon object contains the same fields as `Avatar`'s props, the spread operator can be used to apply them to the `Avatar` component.
 
 <details><summary>💡 Hint</summary>
 
 ```jsx
 const App = () => <>
-  { pokemonList.map(({ /* destructure */ }) => <Avatar key={ /* key */ } />) }
+  { pokemonList.map(({ /* destructure */ }) => <Avatar key={ /* key */ } { ...first } />) }
 </>
 ```
 </details>
@@ -67,7 +67,7 @@ export default App
 #### 📌 Task 3 - Ceate a Pokemon components that renders all three evolutionary stages
 In `App.jsx`, create a `Pokemon` component that accepts the props `first`, `second`, and `third`. The component should display all three Pokémon inside a fragment `<> </>`.
 
-Now use the `Pokemon` component in the map, instead of only showing an `Avatar` with the first Pokemon. If you are up for a challenge, use the rest notatin when destructuring, and spread notation when mapping.
+Now use the `Pokemon` component in the map function created earlier, instead of only showing an `Avatar` with the first Pokemon. If you are up for a challenge, use the rest notatin when destructuring, and spread notation when mapping.
 <details><summary>💡 Hint</summary>
 
 ```js

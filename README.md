@@ -13,6 +13,8 @@ Hei og velkommen til introduksjonskurs i React del 2!
 * `npm run setup` (installer alt i alle mapper på 3-6 min)
 * `code .` (for å åpne mappen i Visual studio code, hvis kommandoen er aktivert)
 
+> Alternativ kan man bruke Gitpod! [Trykk her for å komme i gang med Gitpod](https://gitpod.io/#https://github.com/react-kurs/dag2)
+
 ## Intro
 Dette repoet inneholder foiler for teamene `useEffect()` og bruk av `http`-klienter med javaScript sin innebygde HTTP-klient `fetch()`.
 Beskrivelser av temaene ligger i `README.md` filene, som leses best ved å navigere på [github](https://github.com/react-kurs/dag2).

@@ -1,9 +1,9 @@
 import React from 'react';
 
 const byUrls = {
-  oslo: "https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json",
-  trondheim: "https://gbfs.urbansharing.com/trondheimbysykkel.no/station_status.json",
-  bergen: "https://gbfs.urbansharing.com/bergenbysykkel.no/station_status.json"
+  oslo: "https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json",
+  trondheim: "https://gbfs.urbansharing.com/trondheimbysykkel.no/station_information.json",
+  bergen: "https://gbfs.urbansharing.com/bergenbysykkel.no/station_information.json"
 }
 
 // Utføre et HTTP kall mot bysykkel API
